@@ -3,7 +3,7 @@ program dashboardchartjs;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  main in 'main.pas' {Form4},
+  main in 'main.pas' {fmmain},
   dashboard in 'dashboard.pas';
 
 {$R *.res}
