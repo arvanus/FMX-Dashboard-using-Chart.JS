@@ -109,7 +109,7 @@ end;
 
 {$IFDEF MSWINDOWS}
 
-procedure TForm1.SetPermissions;
+procedure Tfmmain.SetPermissions;
 const
   cHomePath = 'SOFTWARE';
   cFeatureBrowserEmulation =

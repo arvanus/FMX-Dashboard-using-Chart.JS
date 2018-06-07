@@ -1,7 +1,7 @@
 object fmmain: Tfmmain
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'ChartJS Dashboard Design'
   ClientHeight = 480
   ClientWidth = 640
   FormFactor.Width = 320
