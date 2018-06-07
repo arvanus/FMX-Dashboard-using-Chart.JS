@@ -14,7 +14,7 @@ object fmmain: Tfmmain
     Align = Top
     Position.Y = 48.000000000000000000
     Size.Width = 640.000000000000000000
-    Size.Height = 17.000000000000000000
+    Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
     Text = 'Uses a HTML form with bootstrap 3 css and Javascript libraries'
     TabOrder = 1
@@ -61,7 +61,7 @@ object fmmain: Tfmmain
   object WebBrowser1: TWebBrowser
     Align = Client
     Size.Width = 640.000000000000000000
-    Size.Height = 415.000000000000000000
+    Size.Height = 399.000000000000000000
     Size.PlatformDefault = False
   end
 end

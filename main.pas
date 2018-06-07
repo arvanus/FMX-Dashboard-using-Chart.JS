@@ -145,110 +145,151 @@ end;
 
 procedure Tfmmain.webbrowsernewjs;
 var
-  clabels, cbackgroundcolor, cdata: string;
-  mlabels, mdata1, mdata2, mabackgroundcolor, madata, mbbackgroundcolor2, mbdata: string;
-  updategraph: string;
+clabels,cbackgroundcolor,cdata:string;
+mlabels, mdata1, mdata2,mabackgroundcolor, madata,
+mbbackgroundcolor2, mbdata:string;
+updategraph:string;
 begin
-  GetdoughnutDetail(clabels, cbackgroundcolor, cdata);
+ GetdoughnutDetail(clabels,cbackgroundcolor,cdata);
+ GetmixedchartDetail(mlabels, mdata1, mdata2,
+  mabackgroundcolor, madata, mbbackgroundcolor2, mbdata);
+updategraph :=
+'new Chart(document.getElementById("doughnut-chart"), {'
++'    type: "doughnut",'
++'    data: {'
++'      labels: '+clabels
++'      datasets: ['
++'        { '
+ +'         label: "Rooms",'
+ +'         backgroundColor:' +cbackgroundcolor
+ +'         data: ' +cdata
+ +'       } '
++'      ]  '
+ +'   },  '
+ +'   options: {   '
+ +'     legend: { display: false },  '
+ +'     title: {   '
+ +'       display: "True",  '
+ +'       text: "Total Assets Value"   '
+ +'     }  '
+ +'   }  '
++'});'
 
-  GetmixedchartDetail(mlabels, mdata1, mdata2, mabackgroundcolor, madata,
-    mbbackgroundcolor2, mbdata);
-
-  updategraph := 'new Chart(document.getElementById("doughnut-chart"), {' +
-  '    type: "doughnut",'
-    + '    data: {' +
-    '      labels: ' + clabels +
-    '      datasets: [' +
-    '        { ' +
-    '         label: "Rooms",' +
-    '         backgroundColor:' + cbackgroundcolor +
-    '         data: ' + cdata +
-    '       } ' +
-    '      ]  ' +
-    '   },  ' + '   options: {   ' +
-    '     legend: { display: false },  ' +
-    '     title: {   ' +
-    '       display: "True",  ' +
-    '       text: "Total Assets Value"   ' +
-    '     }  ' +
-    '   }  ' +
-    '});'
-
-    + 'new Chart(document.getElementById("mixed-chart"), {  ' + '   type: "bar",              ' +
-    '  data: {                    ' +
-    '     labels: ' + mlabels +
-    '      datasets: [{            ' +
-    '          label: "Purchased",   ' +
-    '          type: "line",        ' +
-    '          borderColor: "#8e5ea2",   ' +
-    '          data: ' + mdata1 +
-    '          fill: false   ' +
-    '        }, {       ' +
-    '          label: "Disposed",    ' +
-    '          type: "line",        ' +
-    '          borderColor: "#3e95cd",    ' +
-    '          data:'
-    + mdata2 + '         fill: false   ' +
-    '        }, {         ' +
-    '          label: "Purchased",  ' +
-    '          type: "bar",        ' +
-    '         backgroundColor: "rgba(0,120,5,0.2)", ' +
-    '         data: ' + mdata1 +
-    '        }, {                       ' +
-    '          label: "Disposed",       ' +
-    '          type: "bar",         ' +
-    '          backgroundColor: "rgba(0,30,220,0.2)", ' +
-    '          backgroundColorHover: "#3e95cd",    ' +
-    '         data: ' + mdata2 +
-    '        }           ' +
-    '      ]           ' +
-    '    },            ' +
-    '    options: {     ' +
-    '     title: {     ' +
-    '        display: true, ' +
-    '        text: "Purchased & Disposed Assets"  ' +
-    '      },       ' +
-    '      legend: { display: false }  ' +
-    '    }     ' +
-    '});   ';
-  WebBrowser1.EvaluateJavaScript(updategraph);
++'new Chart(document.getElementById("mixed-chart"), {  '
+ +'   type: "bar",              '
+ +'  data: {                    '
+ +'     labels: '+ mlabels
++'      datasets: [{            '
++'          label: "Purchased",   '
++'          type: "line",        '
++'          borderColor: "#8e5ea2",   '
++'          data: '+mdata1
++'          fill: false   '
++'        }, {       '
++'          label: "Disposed",    '
++'          type: "line",        '
++'          borderColor: "#3e95cd",    '
++'          data:' +mdata2
++'         fill: false   '
++'        }, {         '
++'          label: "Purchased",  '
++'          type: "bar",        '
+ +'         backgroundColor: "rgba(0,120,5,0.2)", '
+ +'         data: '+mdata1
++'        }, {                       '
++'          label: "Disposed",       '
++'          type: "bar",         '
++'          backgroundColor: "rgba(0,30,220,0.2)", '
++'          backgroundColorHover: "#3e95cd",    '
++'         data: '+ mdata2
++'        }           '
++'      ]           '
++'    },            '
++'    options: {     '
+ +'     title: {     '
++'        display: true, '
++'        text: "Purchased & Disposed Assets"  '
++'      },       '
++'      legend: { display: false }  '
++'    }     '
++'});   '
+  ;
+    WebBrowser1.EvaluateJavaScript(updategraph);
 end;
 
 procedure Tfmmain.webbrowserstart;
 var
-  clabels, cbackgroundcolor, cdata, mlabels, mdata1, mdata2, mdata3, mdata4: string;
-  updategraph: string;
+clabels,cbackgroundcolor,cdata,mlabels, mdata1, mdata2,mdata3,mdata4 :string;
+updategraph:string;
 begin
-  clabels := '["Upstairs", "Outside", "Bedroom3", "Garage", "Dining Room"],';
-  cbackgroundcolor := '["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"], ';
-  cdata := '[890,200,500,100,1000]';
-  mlabels := ' ["Dining Room", "Bedroom", "Garage","Stoep"], ';
-  mdata1 := '[200,140,70,1000],';
-  mdata2 := '[800,720,1220,3800],';
+ clabels:= '["Upstairs", "Outside", "Bedroom3", "Garage", "Dining Room"],';
+ cbackgroundColor:= '["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"], ';
+ cdata:='[890,200,500,100,1000]';
+ mlabels:= ' ["Dining Room", "Bedroom", "Garage","Stoep"], ';
+ mdata1:=  '[200,140,70,1000],';
+ mdata2:=  '[800,720,1220,3800],';
 
-  updategraph := 'new Chart(document.getElementById("doughnut-chart"), {' + '    type: "doughnut",'
-    + '    data: {' + '      labels: ' + clabels + '      datasets: [' + '        { ' +
-    '         label: "Rooms",' + '         backgroundColor:' + cbackgroundcolor + '         data: '
-    + cdata + '       } ' + '      ]  ' + '   },  ' + '   options: {   ' +
-    '     legend: { display: false },  ' + '     title: {   ' + '       display: "True",  ' +
-    '       text: "Total Assets Value"   ' + '     }  ' + '   }  ' + '});'
+updategraph :=
+'new Chart(document.getElementById("doughnut-chart"), {'
++'    type: "doughnut",'
++'    data: {'
++'      labels: '+clabels
++'      datasets: ['
++'        { '
+ +'         label: "Rooms",'
+ +'         backgroundColor:' +cbackgroundcolor
+ +'         data: ' +cdata
+ +'       } '
++'      ]  '
+ +'   },  '
+ +'   options: {   '
+ +'     legend: { display: false },  '
+ +'     title: {   '
+ +'       display: "True",  '
+ +'       text: "Total Assets Value"   '
+ +'     }  '
+ +'   }  '
++'});'
 
-    + 'new Chart(document.getElementById("mixed-chart"), {  ' + '   type: "bar",              ' +
-    '  data: {                    ' + '     labels: ' + mlabels + '      datasets: [{            ' +
-    '          label: "Purchased",   ' + '          type: "line",        ' +
-    '          borderColor: "#8e5ea2",   ' + '          data: ' + mdata1 +
-    '          fill: false   ' + '        }, {       ' + '          label: "Disposed",    ' +
-    '          type: "line",        ' + '          borderColor: "#3e95cd",    ' + '          data:'
-    + mdata2 + '         fill: false   ' + '        }, {         ' +
-    '          label: "Purchased",  ' + '          type: "bar",        ' +
-    '         backgroundColor: "rgba(0,120,5,0.2)", ' + '         data: ' + mdata1 +
-    '        }, {                       ' + '          label: "Disposed",       ' +
-    '          type: "bar",         ' + '          backgroundColor: "rgba(0,30,220,0.2)", ' +
-    '          backgroundColorHover: "#3e95cd",    ' + '         data: ' + mdata2 +
-    '        }           ' + '      ]           ' + '    },            ' + '    options: {     ' +
-    '     title: {     ' + '        display: true, ' +
-    '        text: "Purchased & Disposed Assets"  ' + '      },       ' +
-    '      legend: { display: false }  ' + '    }     ' + '});   ';
++'new Chart(document.getElementById("mixed-chart"), {  '
+ +'   type: "bar",              '
+ +'  data: {                    '
+ +'     labels: '+ mlabels
++'      datasets: [{            '
++'          label: "Purchased",   '
++'          type: "line",        '
++'          borderColor: "#8e5ea2",   '
++'          data: '+mdata1
++'          fill: false   '
++'        }, {       '
++'          label: "Disposed",    '
++'          type: "line",        '
++'          borderColor: "#3e95cd",    '
++'          data:' +mdata2
++'         fill: false   '
++'        }, {         '
++'          label: "Purchased",  '
++'          type: "bar",        '
+ +'         backgroundColor: "rgba(0,120,5,0.2)", '
+ +'         data: '+mdata1
++'        }, {                       '
++'          label: "Disposed",       '
++'          type: "bar",         '
++'          backgroundColor: "rgba(0,30,220,0.2)", '
++'          backgroundColorHover: "#3e95cd",    '
++'         data: '+ mdata2
++'        }           '
++'      ]           '
++'    },            '
++'    options: {     '
+ +'     title: {     '
++'        display: true, '
++'        text: "Purchased & Disposed Assets"  '
++'      },       '
++'      legend: { display: false }  '
++'    }     '
++'});   '
+  ;
   WebBrowser1.EvaluateJavaScript(updategraph);
 end;
 
